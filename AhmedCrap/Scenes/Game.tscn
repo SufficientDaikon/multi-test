@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://ga6jefvhwf7m"]
+
+[ext_resource type="Script" path="res://AhmedCrap/Scripts/MultiplayerScript.gd" id="1_pneae"]
+[ext_resource type="Script" path="res://AhmedCrap/Scenes/Steam.gd" id="4_ovtxl"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_pneae")
+
+[node name="Host" type="Button" parent="."]
+offset_left = 3.0
+offset_top = 34.0
+offset_right = 47.0
+offset_bottom = 65.0
+text = "Host"
+
+[node name="Join" type="Button" parent="."]
+offset_left = 3.0
+offset_top = 72.0
+offset_right = 50.0
+offset_bottom = 103.0
+scale = Vector2(0.88, 1)
+text = "Join
+"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://AhmedCrap/Scenes/player_scene.tscn")
+spawn_path = NodePath("..")
+
+[node name="Steam" type="Node2D" parent="."]
+script = ExtResource("4_ovtxl")
+
+[connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]

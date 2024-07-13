@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfn8u7oadgxgx"]
+
+[ext_resource type="Script" path="res://AhmedCrap/Scripts/MultiplayerSpawner.gd" id="1_py1qk"]
+[ext_resource type="PackedScene" uid="uid://mspxm11m1qod" path="res://AhmedCrap/Scenes/player_scene.tscn" id="2_hxn0g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2qau"]
+size = Vector2(19.5066, 1.38843)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hdg06"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_fledq"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(574, 536)
+scale = Vector2(58.8005, 7.9009)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.00850201, 0)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_v2qau")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+scale = Vector2(20.339, -1.5)
+mesh = SubResource("BoxMesh_hdg06")
+texture = SubResource("MeshTexture_fledq")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath(".")
+script = ExtResource("1_py1qk")
+playerScene = ExtResource("2_hxn0g")
